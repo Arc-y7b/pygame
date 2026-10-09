@@ -1,4 +1,4 @@
-class quiz:
+class Quiz:
 
     def __init__(self, student_name):
         self.student_name = student_name
@@ -8,54 +8,64 @@ class quiz:
                 "question":"which language in mainly used in web page structure?",
                 "options": ["Python", "HTML", "Java", "C++"],
                 "answer": "HTML"
-            }
+            },
             {
-                "question":,"which keyword is used to create a calss in python"
+                "question":"which keyword is used to create a calss in python",
                 "options": ["functions", "define", "class", "objects"],
                 "answer": "class"
-            }        
+            } ,       
             {
-                "question":,"which data type stores true or false"
+                "question":"which data type stores true or false",
                 "options": ["string", "integer", "boolean", "float"],
                 "answer": "boolean"
-            }
+            },
             {
-                "question":,"which symbol is used to start a command inj python?"
+                "question":"which symbol is used to start a command inj python?",
                 "options": ["//", "#", "/*", "--"],
                 "answer": "#"
             }
-
+        ]
     def start_quiz(self):
-    print("\nWelcome to the online Quiz!")
-    print("student:" self.student_name)
+        print("\nWelcome to the online Quiz!")
+        print("student:" ,self.student_name)
 
-    for question in self.questions:
-    print("\n" + question["question"])
+        for question in self.questions:
+            print("\n" + question["question"])
 
-    for i in range (len(question["options"])):
-        print(i + 1, ".", question["options"][i])
+            for i in range (len(question["options"])):
+                print(i + 1, ".", question["options"][i])
 
-    choice = int(input("Enter your answer (1-4): "))
+            try:
+                choice = int(input("Enter your answer (1-4): "))
 
-    selected_answer = question[optioms][choice - 1]
+                if choice < 1 or choice > 4:
+                    print("Invalid Choice! Please enter a number form 1 to 4. ")
+                    continue
 
-    if selective_answer == question["answer"]:
-       print("correct!")
-       self.score += 1
-    else:
-       print("Wrong!")
-       print("correct answer:", question["answer"])
+                selected_answer = question["options"][choice - 1]
 
-def show_result(self):
-   print("\n----- Quiz result -----")
-   print("student:", self.student_name)
-   print("Score:", self.score "/", len(self.questions))
+                if selected_answer == question["answer"]:
+                    print("correct!")
+                    self.score += 1
+                else:
+                    print("Wrong!")
+                    print("correct answer:", question["answer"])
 
-   percentage = (self.score / len(self.questions))*100
+            except ValueError:
+                print("Please enter a valid number. ")
 
-   print("percentage:", percentage, "%")
+
+    def show_result(self):
+        print("\n----- Quiz result -----")
+        print("student:", self.student_name)
+        print("Score:", 
+              self.score, "/", len(self.questions))
+
+        percentage = (self.score / len(self.questions))*100
+
+        print("percentage:", percentage, "%")
 
 student1 = Quiz("Alice")
 
 student1.start_quiz()
-student1.show_results()               
+student1.show_result()               
